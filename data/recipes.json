@@ -1,0 +1,53 @@
+[
+  {
+    "name": "Tomato Egg Rice",
+    "ingredients": ["rice", "egg", "tomato", "onion", "salt", "oil"],
+    "steps": [
+      "Heat oil in a pan.",
+      "Cook onion and tomato until soft.",
+      "Add egg and scramble.",
+      "Mix in cooked rice.",
+      "Add salt and serve."
+    ]
+  },
+  {
+    "name": "Onion Omelette",
+    "ingredients": ["egg", "onion", "salt", "oil"],
+    "steps": [
+      "Chop the onion.",
+      "Beat eggs with salt.",
+      "Cook onion in oil.",
+      "Pour in egg mixture and cook both sides."
+    ]
+  },
+  {
+    "name": "Potato Fry",
+    "ingredients": ["potato", "oil", "salt", "chili powder"],
+    "steps": [
+      "Peel and cut potatoes.",
+      "Heat oil in a pan.",
+      "Cook potatoes until crisp.",
+      "Add salt and chili powder."
+    ]
+  },
+  {
+    "name": "Veg Sandwich",
+    "ingredients": ["bread", "tomato", "onion", "butter", "salt"],
+    "steps": [
+      "Slice tomato and onion.",
+      "Spread butter on bread.",
+      "Add vegetables and salt.",
+      "Close and serve."
+    ]
+  },
+  {
+    "name": "Masala Maggi",
+    "ingredients": ["maggi", "onion", "tomato", "water", "oil"],
+    "steps": [
+      "Heat oil and cook onion and tomato.",
+      "Add water and bring to boil.",
+      "Add noodles and cook.",
+      "Serve hot."
+    ]
+  }
+]
