@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>🍳 Leftover Chef</title>
+
     <style>
         body {
-            font-family: Arial;
+            font-family: Arial, sans-serif;
             background: #f5f5f5;
             text-align: center;
+            margin: 0;
+            padding: 0;
         }
 
         h1 {
             color: #333;
+            margin-top: 40px;
         }
 
         .container {
@@ -22,6 +27,7 @@
             width: 300px;
             border-radius: 8px;
             border: 1px solid #ccc;
+            font-size: 16px;
         }
 
         button {
@@ -31,6 +37,12 @@
             border: none;
             border-radius: 8px;
             cursor: pointer;
+            font-size: 16px;
+            margin-left: 8px;
+        }
+
+        button:hover {
+            background: #ff5252;
         }
 
         .card {
@@ -38,7 +50,8 @@
             padding: 20px;
             background: white;
             border-radius: 12px;
-            width: 500px;
+            width: 520px;
+            max-width: 90%;
             margin-left: auto;
             margin-right: auto;
             text-align: left;
@@ -48,6 +61,14 @@
         .title {
             font-size: 20px;
             font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
         }
     </style>
 </head>
@@ -58,7 +79,6 @@
 
 <div class="container">
     <input id="ingredients" placeholder="egg,onion,tomato">
-    <br><br>
     <button onclick="getRecipe()">Get Recipe</button>
 </div>
 
@@ -66,7 +86,7 @@
 
 <script>
 async function getRecipe() {
-    const ingredients = document.getElementById("ingredients").value;
+    const ingredients = document.getElementById("ingredients").value.trim();
 
     if (!ingredients) {
         alert("Please enter ingredients first!");
@@ -75,16 +95,22 @@ async function getRecipe() {
 
     document.getElementById("result").innerHTML = "<p>Loading recipe...</p>";
 
+    // For local backend
+    const API_BASE = "http://127.0.0.1:8000";
+
+    // For deployed Render backend, use this instead:
+    // const API_BASE = "https://ai-project1-1iws.onrender.com";
+
     try {
         const res = await fetch(
-            `https://ai-project1-1iws.onrender.com/recommend-text-simple?ingredients=${encodeURIComponent(ingredients)}`
+            `${API_BASE}/recommend-text-simple?ingredients=${encodeURIComponent(ingredients)}`
         );
 
-        if (!res.ok) {
-            throw new Error("API request failed");
-        }
-
         const data = await res.text();
+
+        if (!res.ok) {
+            throw new Error(`Status ${res.status}: ${data}`);
+        }
 
         document.getElementById("result").innerHTML = `
             <div class="card">
@@ -96,7 +122,8 @@ async function getRecipe() {
         document.getElementById("result").innerHTML = `
             <div class="card">
                 <div class="title">❌ Error</div>
-                <p>Could not fetch recipe. Please check your internet or backend.</p>
+                <p>Could not fetch recipe.</p>
+                <pre>${error.message}</pre>
             </div>
         `;
         console.error(error);

@@ -11,5 +11,5 @@ def run_recipe_workflow(user_ingredients, recipes):
         "best_recipe": kitchen_results["best_recipe"],
         "shopping_list": kitchen_results["shopping_list"],
         "reason": kitchen_results["reason"],
-        "other_matches": recipe_results["top_matches"][1:3]
+        "other_matches": recipe_results["top_matches"][1:3],
     }
