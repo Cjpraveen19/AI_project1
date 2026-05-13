@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 import json
 from pathlib import Path
 from app.orchestrator import run_recipe_workflow
@@ -7,6 +8,15 @@ from typing import List
 from fastapi.responses import PlainTextResponse
 
 app = FastAPI()
+app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 RECIPES_FILE = BASE_DIR / "data" / "recipes.json"
